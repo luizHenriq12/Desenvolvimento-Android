@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class ResultActivity extends AppCompatActivity {
     TextView resultado;
     String strNome;
-    Float fltAltura, fltPeso, fltResult;
+    Float fltRa, fltAltura, fltPeso, fltResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +21,12 @@ public class ResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         strNome = intent.getStringExtra("nome");
+        fltRa = Float.parseFloat(intent.getStringExtra("ra"));
         fltAltura = Float.parseFloat(intent.getStringExtra("altura"));
         fltPeso = Float.parseFloat(intent.getStringExtra("peso"));
         fltResult = fltPeso / (fltAltura * fltAltura);
 
-        String strResult = "Olá" + strNome + "!";
+        String strResult = "Olá" + strNome + "!" + "\n" + "RA" + fltRa;
         strResult = strResult + "\n" + "IMC = " + fltResult.toString();
 
         if(fltResult < 18.5) {
