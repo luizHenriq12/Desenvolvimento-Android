@@ -3,6 +3,7 @@ package com.alfaumuarama.imcapplication;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -44,7 +45,15 @@ public class ResultActivity extends AppCompatActivity {
         else {
             strResult = strResult + "\n" + "Obesidade Grave";
         }
-
+        new AlertDialog.Builder(resultado.getContext())
+                .setTitle("Resultado")
+                .setMessage(strResult.toString())
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .show();
         resultado.setText(strResult);
     }
 }
